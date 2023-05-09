@@ -1,0 +1,65 @@
+
+Hi all  this is how I structured my solution  for reading of textfiles so that
+
+You can use this as method of prompt for
+media and explanations
+
+The tree structure looks like this
+Root folder contains the following
+    CMakeLists.txt
+    dist
+        check.txt
+    include
+        ColorChooser.hpp
+        PrintWriter.hpp
+    src
+        ColorChooser.cpp
+        main.cpp
+        PrintWriter.cpp
+
+The provided code defines a class named ColorChooser has a constructor, a destructor, and three member functions named setColor, getColorchars, and getColorSet.
+
+The constructor is called when an object of the ColorChooser class is created. In this case, it prints the message "In constructor" to the console.
+
+The destructor is called when an object of the ColorChooser class is destroyed. In this case, it prints a message to the console, including the name and date of the author, as well as links to their Facebook and Instagram profiles.
+
+The setColor function prompts the user to choose a color from a list of options and stores the chosen color as a string in a private member variable named _COLOR. It also stores the ANSI escape code associated with the chosen color in another private member variable named _colourchars.
+
+The getColorchars function returns the value of the _colourchars member variable.
+
+The getColorSet function returns the value of the _COLOR member variable.
+
+The PrintWriter class , has a constructor, a destructor, and two member functions.
+
+The constructor takes four parameters: a string fname representing the filename, a string cc representing the color to be used for printing, a string charcolor representing the color of the characters, and an integer delay representing the delay between characters. The constructor opens the file with the given filename and throws a runtime error if the file cannot be opened. It also prints out the color, filename, and delay values.
+
+The destructor is responsible for cleaning up any resources used by the PrintWriter object.
+
+The member function printParagraphs reads the file line by line and groups the lines into paragraphs. It then calls the member function printParagraph to print each paragraph.
+
+The member function printParagraph takes a vector of strings representing a paragraph and prints it to the console. It iterates over each line in the paragraph, and for each character in the line, it prints the character in the specified color and sleeps for the specified delay. It also prompts the user to press enter for the next paragraph.
+
+Overall, the PrintWriter class provides a way to print a file with specified colors and delays between characters.
+
+The line of code cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); is used to clear the input buffer of any remaining characters after reading input from the user via cin.
+
+Here's a breakdown of what each part of the line does:
+
+    cin.ignore() - ignores input from the input stream
+    std::numeric_limits<std::streamsize>::max() - sets the maximum number of characters to be ignored. numeric_limits is a template class that provides a way to get various properties of fundamental data types in C++. In this case, std::streamsize is the type used to represent the size of a stream. max() is a member function that returns the maximum value that can be represented by that type.
+    '\n' - specifies the delimiter character to stop ignoring input. In this case, it's the newline character, which is the character that is typically added when the user presses the Enter key.
+
+Together, the cin.ignore() function call with the two arguments ignores all remaining characters in the input buffer up to the next newline character, which is then discarded. This ensures that the input buffer is empty and ready for the next input operation.
+
+The main function is the entry point of the program, where the execution of the program begins.
+
+In this specific program, main does the following:
+
+    Declare a string variable colortext and an integer variable delay, which sets the delay between printing each character.
+    Creates a unique pointer p to an instance of ColorChooser class using the make_unique function.
+    Calls the setColor() method of the ColorChooser class to display a color menu to the user and allow them to choose the color of the text to be printed.
+    Creates a unique pointer pw to an instance of PrintWriter class using the make_unique function, passing the name of the output file, the color chosen by the user, the color characters, and the delay as arguments.
+    Calls the printParagraphs() method of the PrintWriter class to read the file, group the lines into paragraphs, and print each paragraph with the selected color and delay.
+    Returns 0 to indicate successful execution of the program.
+
+Note: the code also includes commented-out lines that create instances of ColorChooser and PrintWriter using raw pointers instead of unique pointers. These raw pointers must be explicitly deleted using delete to avoid memory leaks.
