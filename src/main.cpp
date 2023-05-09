@@ -7,10 +7,56 @@
 #include "../include/ColorChooser.hpp"
 #include "../include/PrintWriter.hpp"
 
+#include <string>
+#include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
+
+// this function remove the "./" from file listing 
+
+string formatString(const std::string& str1) {
+    std::string formatted_str1 = str1.substr(2);  // remove "./" prefix
+    
+    return "\"" + formatted_str1 + "\" " ;
+}
+
+
+
+
+string OpenDirectory() {
+   
+    /* The .  implies current directory */
+    
+    string path = "." , myfile ;
+
+
+    cout << endl << "Listing files In current Directory " << endl << endl;
+    for (const auto & entry : fs::directory_iterator(path))
+
+    // call function to remove the "./" chars 
+
+
+    cout <<formatString( entry.path()) << endl;
+    cout << "Copy and past  the file  you want  from the listing in terminal" << endl <<
+    "at next prompt then press enter"  << endl  ;
+    cout <<"Past file name after : " ;
+   
+    cin >> myfile  ;
+
+    return myfile ; 
+}
+
+
 int main()
 {
 
-    string colortext;
+
+    // list all  files  call OpenDirectory function
+
+   string filename = OpenDirectory() ;
+
+    
+    
 
     // you can adjust delay here 
 
@@ -29,7 +75,7 @@ int main()
 
      // create a pointer that points to the Printwriter class
 
-    auto pw = make_unique<PrintWriter>("check.txt",p->getColorSet(),p->getColorchars(),delay);
+    auto pw = make_unique<PrintWriter>(filename,p->getColorSet(),p->getColorchars(),delay);
     
     /*
     PrintWriter *m_printer = new PrintWriter("check.txt", p->getColorSet(),p->getColorchars() , delay);
