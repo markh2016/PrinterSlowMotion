@@ -18,7 +18,7 @@ echo "***************************************************"
 
 # Display the main menu
 while true; do
-  clear 
+ 
   echo -e "\e[33mChoose an option:\e[0m"
   echo -e "\e[34m1: \e[0m\e[32mCreate build files\e[0m"
   echo -e "\e[34m2: \e[0m\e[32mBuild executable\e[0m"
